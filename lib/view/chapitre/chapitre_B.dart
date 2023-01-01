@@ -5,16 +5,16 @@ import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 
 FirebaseStorage storage=FirebaseStorage.instance;
 
-class chapitre_a extends StatefulWidget {
-  const chapitre_a({Key? key}) : super(key: key);
+class chapitre_B extends StatefulWidget {
+  const chapitre_B({Key? key}) : super(key: key);
 
   @override
-  _chapitre_aState createState() => _chapitre_aState();
+  _chapitre_BState createState() => _chapitre_BState();
 }
 
-class _chapitre_aState extends State<chapitre_a> {
+class _chapitre_BState extends State<chapitre_B> {
  final GlobalKey<SfPdfViewerState> _pdfViewerKey = GlobalKey();
-  String chapitreApdf='';
+  String chapitreBpdf='';
  
 
   @override
@@ -25,10 +25,10 @@ class _chapitre_aState extends State<chapitre_a> {
   }
 
   getDocument(){
-    Reference ref =storage.ref('referentiel').child('Chap A Version1.pdf');
+    Reference ref =storage.ref('referentiel').child('Chap B Version1.pdf');
     ref.getDownloadURL().then((chapitrectelecharge){
       setState(() {
-        chapitreApdf=chapitrectelecharge;
+        chapitreBpdf=chapitrectelecharge;
       });
       print('le document est télécharger');
     });
@@ -38,9 +38,10 @@ class _chapitre_aState extends State<chapitre_a> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Chapitre A'),
+        title: Text('Chapitre B'),
+        centerTitle: true,
       ),
-      body: SfPdfViewer.network(chapitreApdf,
+      body: SfPdfViewer.network(chapitreBpdf,
       key: _pdfViewerKey ,)
     );
   }
