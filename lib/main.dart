@@ -1,4 +1,6 @@
-import 'package:flutter/cupertino.dart';
+
+
+
 import 'package:flutter/material.dart';
 import 'package:sirius_cftva/view/choix_train.dart';
 import 'package:sirius_cftva/view/login_page.dart';
@@ -18,6 +20,7 @@ Future <void> main() async {
 
   auth.authStateChanges().listen((User? user) {
     if (user == null) {
+      
       print('Utilisateur non connecté');
       runApp(InitializeApp());
     } else {
@@ -37,7 +40,7 @@ class InitializeApp extends StatelessWidget {
             return login();
           }
           if (snapshot.hasError) {
-            return error();
+            return const error();
           }
           return loading();
         });

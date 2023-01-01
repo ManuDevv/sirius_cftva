@@ -112,8 +112,8 @@ class login_page extends StatelessWidget {
                       onPressed: ()async{
                         try {
                           auth.signInWithEmailAndPassword(
-                              email: emailController.text,
-                              password: passwordController.text);
+                              email: emailController.text.trim(),
+                              password: passwordController.text.trim());
 
                         } on FirebaseAuthException catch (e) {
                          ScaffoldMessenger.of(context).showSnackBar(
@@ -134,13 +134,5 @@ class login_page extends StatelessWidget {
       ),
     );
   }
- /*void toConnect (){
-    try{
-      auth.signInWithEmailAndPassword(
-          email: emailController.text,
-          password: passwordController.text).then((value) {
-            print(value.toString());
-      });
-    }catch(e){print(e.toString());}
- }*/
+
 }

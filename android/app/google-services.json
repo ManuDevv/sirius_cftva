@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "194520876629",
-    "project_id": "sirius-cftva",
-    "storage_bucket": "sirius-cftva.appspot.com"
+    "project_number": "809414174003",
+    "project_id": "sirius-cftva-bff31",
+    "storage_bucket": "sirius-cftva-bff31.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:194520876629:android:7133db98b31d2965b476dc",
+        "mobilesdk_app_id": "1:809414174003:android:97a0729f1f520c95878a46",
         "android_client_info": {
           "package_name": "com.example.sirius_cftva"
         }
       },
       "oauth_client": [
         {
-          "client_id": "194520876629-p0ciso4sm5ku4ji5vu9l57dkiqesmu27.apps.googleusercontent.com",
+          "client_id": "809414174003-djh4tkekvbe40cj3nnf8h7s243ddk2vn.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBlrCZ3rkj4FsC843_WLn__eNvJraxxEGk"
+          "current_key": "AIzaSyBEbCOK3Vp7pMVasmQuiEDwGXdutdshP7I"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "194520876629-p0ciso4sm5ku4ji5vu9l57dkiqesmu27.apps.googleusercontent.com",
+              "client_id": "809414174003-djh4tkekvbe40cj3nnf8h7s243ddk2vn.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

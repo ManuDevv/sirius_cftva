@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 var diff;
 
-void differenceHeureArques() {
+ differenceHeureArques() {
   TimeOfDay now = TimeOfDay.now();
   // ci dessous on transforme l'heure actuelle en minute
   int nowInMinutes = now.hour * 60 + now.minute;
@@ -16,7 +16,7 @@ void differenceHeureArques() {
   diff = nowInMinutes - heureDeArquesEnMinute;
   print(diff);
 
-
+ 
 }
 
 void differenceHeureBlendecques() {
@@ -28,6 +28,7 @@ void differenceHeureBlendecques() {
   diff = nowInMinutes - testDateInMinutes;
   print(diff);
 }
+
 void differenceHeureLaCoupole() {
   TimeOfDay now = TimeOfDay.now();
   int nowInMinutes = now.hour * 60 + now.minute;
@@ -37,6 +38,7 @@ void differenceHeureLaCoupole() {
   diff = nowInMinutes - testDateInMinutes;
   print(diff);
 }
+
 void differenceHeureHallines() {
   TimeOfDay now = TimeOfDay.now();
   int nowInMinutes = now.hour * 60 + now.minute;
@@ -46,6 +48,7 @@ void differenceHeureHallines() {
   diff = nowInMinutes - testDateInMinutes;
   print(diff);
 }
+
 void differenceHeureEsquerdes() {
   TimeOfDay now = TimeOfDay.now();
   int nowInMinutes = now.hour * 60 + now.minute;
@@ -75,3 +78,5 @@ void differenceHeureLumbres() {
   diff = nowInMinutes - testDateInMinutes;
   print(diff);
 }
+
+

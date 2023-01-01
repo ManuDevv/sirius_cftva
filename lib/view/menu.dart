@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:sirius_cftva/services/deconexion.dart';
 import 'package:sirius_cftva/services/planning_firebase_storage.dart';
+import 'package:sirius_cftva/services/planning_firebase_storage_2.dart';
 import 'package:sirius_cftva/theme/color_theme.dart';
 import 'package:sirius_cftva/view/choix_train.dart';
 import 'package:sirius_cftva/view/menu_chapitre_referentiel.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:sirius_cftva/view/test_scroll_view_3d.dart';
 
 
 FirebaseAuth auth =FirebaseAuth.instance;
@@ -60,7 +62,7 @@ class menu extends StatelessWidget {
           minimumSize: MaterialStateProperty.all(Size(largeur_card, hauteur_card))
       ),
         onPressed: (){
-     //     Navigator.push(context, MaterialPageRoute(builder: (context)=>planning()));
+        Navigator.push(context, MaterialPageRoute(builder: (context)=>planningFiebaseStorage2()));
         },
         child: const Text('PLANNING',
           style: TextStyle(
@@ -118,6 +120,33 @@ class menu extends StatelessWidget {
                   Navigator.push(context, MaterialPageRoute(builder: (context)=>choix_chapitre()));
                     },
                     child: const Text('REFERENTIEL CONDUITE',
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 30,
+                          fontWeight: FontWeight.bold
+                      ),)),
+              ),
+                   Container(
+                decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                        colors: [
+                          Color(0xff52E5E7),
+                          Color(0xff130CB7)
+                        ]
+                    ),
+                    borderRadius: BorderRadius.circular(30)
+                ),
+                child: ElevatedButton(
+
+                    style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all(Colors.transparent,),
+                        shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(30))),
+                        minimumSize: MaterialStateProperty.all(Size(largeur_card, hauteur_card))
+                    ),
+                    onPressed: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>test_scroll_3d()));
+                    },
+                    child: const Text('test 3d ',
                       style: TextStyle(
                           color: Colors.white,
                           fontSize: 30,

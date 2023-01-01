@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sirius_cftva/view/chapitre/chapitre_c.dart';
 import 'package:sirius_cftva/view/chapitre/chapitre_d.dart';
+
 import 'chapitre/chapitre_a.dart';
 
 class choix_chapitre extends StatelessWidget {
@@ -40,7 +41,7 @@ class choix_chapitre extends StatelessWidget {
                           shadowColor: Colors.transparent
                       ),
                       onPressed: (){
-                       // Navigator.push(context, MaterialPageRoute(builder: (context)=>chapitre_a()));
+                       Navigator.push(context, MaterialPageRoute(builder: (context)=>chapitre_a()));
                       },
                       child: Container(
                         padding: EdgeInsets.all(10),
@@ -124,7 +125,7 @@ class choix_chapitre extends StatelessWidget {
                         shadowColor: Colors.transparent
                       ),
                       onPressed: (){
-                      //  Navigator.push(context, MaterialPageRoute(builder: (context)=>chapitre_c()));
+                       Navigator.push(context, MaterialPageRoute(builder: (context)=>chapitre_c()));
                       },
                       child: Container(
                         height: 200,
