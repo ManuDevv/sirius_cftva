@@ -4,11 +4,11 @@ import 'package:sirius_cftva/view/sens_impair.dart';
 import 'sens_impair.dart';
 import 'sens_pair.dart';
 
-class test_parametre extends StatefulWidget {
+class mainSirius extends StatefulWidget {
   int valeurJour = 0;
   int valeurMateriel = 0;
   int valeurSens = 0;
-  test_parametre(
+  mainSirius(
       {Key? key,
       required this.valeurJour,
       required this.valeurMateriel,
@@ -16,10 +16,10 @@ class test_parametre extends StatefulWidget {
       : super(key: key);
 
   @override
-  _test_parametreState createState() => _test_parametreState();
+  _mainSiriusState createState() => _mainSiriusState();
 }
 
-class _test_parametreState extends State<test_parametre> {
+class _mainSiriusState extends State<mainSirius> {
   @override
   void initState() {
     SystemChrome.setPreferredOrientations([DeviceOrientation.landscapeLeft]);

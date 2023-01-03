@@ -9,7 +9,7 @@ import 'package:sirius_cftva/services/difference_heure.dart';
 import 'package:sirius_cftva/services/brightness.dart';
 import 'package:sirius_cftva/services/localisation.dart';
 import 'package:sirius_cftva/services/planning_firebase_storage.dart';
-import 'package:sirius_cftva/view/choix_train.dart';
+
 import 'package:sirius_cftva/view/components/ligne_40km_h.dart';
 import 'package:sirius_cftva/view/components/ligne_Arques.dart';
 import 'package:sirius_cftva/view/components/ligne_Blendecques.dart';

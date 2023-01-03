@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sirius_cftva/view/menu.dart';
+import 'menu.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 

@@ -5,16 +5,16 @@ import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 
 FirebaseStorage storage=FirebaseStorage.instance;
 
-class chapitre_D extends StatefulWidget {
-  const chapitre_D({Key? key}) : super(key: key);
+class chapitre_E extends StatefulWidget {
+  const chapitre_E({Key? key}) : super(key: key);
 
   @override
-  _chapitre_DState createState() => _chapitre_DState();
+  _chapitre_EState createState() => _chapitre_EState();
 }
 
-class _chapitre_DState extends State<chapitre_D> {
+class _chapitre_EState extends State<chapitre_E> {
  final GlobalKey<SfPdfViewerState> _pdfViewerKey = GlobalKey();
-  String chapitreDpdf='';
+  String chapitreEpdf='';
  
 
   @override
@@ -25,10 +25,10 @@ class _chapitre_DState extends State<chapitre_D> {
   }
 
   getDocument(){
-    Reference ref =storage.ref('referentiel').child('Chap D Version1.pdf');
+    Reference ref =storage.ref('referentiel').child('Chap E Version1.pdf');
     ref.getDownloadURL().then((chapitrectelecharge){
       setState(() {
-        chapitreDpdf=chapitrectelecharge;
+        chapitreEpdf=chapitrectelecharge;
       });
       print('le document est télécharger');
     });
@@ -41,7 +41,7 @@ class _chapitre_DState extends State<chapitre_D> {
         title: Text('Chapitre D'),
         centerTitle: true,
       ),
-      body: SfPdfViewer.network(chapitreDpdf,
+      body: SfPdfViewer.network(chapitreEpdf,
       key: _pdfViewerKey ,)
     );
   }

@@ -2,10 +2,13 @@
 
 
 import 'package:flutter/material.dart';
-import 'package:sirius_cftva/view/choix_train.dart';
-import 'package:sirius_cftva/view/login_page.dart';
 
-import 'package:sirius_cftva/view/menu.dart';
+import 'package:sirius_cftva/view/loginScreen.dart';
+import 'package:sirius_cftva/view/main_menuScreen.dart';
+
+import 'package:sirius_cftva/view/splashScreen.dart';
+
+
 
 
 import 'package:firebase_core/firebase_core.dart';
@@ -72,7 +75,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: menu(),
+      home: mainMenu(),
     );
   }
 }
@@ -81,7 +84,7 @@ class login extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: login_page(),
+      home: SplashScreen(),
     );
   }
 }
