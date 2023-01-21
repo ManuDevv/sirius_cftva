@@ -1,11 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:sirius_cftva/services/deconexion.dart';
+import 'package:sirius_cftva/services/planning_firebase_storage.dart';
 import 'package:sirius_cftva/services/planning_firebase_storage_2.dart';
 import 'package:sirius_cftva/view/choix_trainScreen.dart';
+import 'package:sirius_cftva/view/components/bottomNavigationBar.dart';
 import 'package:sirius_cftva/view/menu_chapitre_referentiel.dart';
+import 'package:sirius_cftva/view/menu_documents.dart';
+
+
 
 class mainMenu extends StatefulWidget {
   @override
@@ -14,6 +21,12 @@ class mainMenu extends StatefulWidget {
 
 class _mainMenuState extends State<mainMenu> {
   int currentIndex = 0;
+  @override
+  void initState() {
+    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,7 +55,7 @@ class _mainMenuState extends State<mainMenu> {
             decoration: const BoxDecoration(
                 gradient: LinearGradient(
                     begin: Alignment.topCenter,
-                    end: Alignment.bottomRight,
+                    end: Alignment.bottomCenter,
                     colors: [
                   Color(0xff0f7296),
                   Color(0xff0f7296),
@@ -58,9 +71,12 @@ class _mainMenuState extends State<mainMenu> {
                       onTap: () {
                         Navigator.push(
                             context,
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                    planningFiebaseStorage2()));
+                            PageTransition(
+                              childCurrent: widget,
+                              alignment: Alignment.bottomCenter,
+                                child: planning(),
+                                type: PageTransitionType.fade,
+                                duration: Duration(milliseconds: 4000)));
                       },
                       child: Container(
                         height: 200,
@@ -110,7 +126,7 @@ class _mainMenuState extends State<mainMenu> {
                           child: Padding(
                             padding: const EdgeInsets.only(top: 50.0, left: 10),
                             child: Text(
-                              "SIRIUS \n CFTVA",
+                              "AMAC \n CFTVA",
                               style: GoogleFonts.cormorantGaramond(
                                   color: Colors.white,
                                   fontWeight: FontWeight.bold,
@@ -133,7 +149,7 @@ class _mainMenuState extends State<mainMenu> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => choix_chapitre()));
+                                builder: (context) => menuDocuements()));
                       },
                       child: Container(
                         height: 200,
@@ -148,7 +164,7 @@ class _mainMenuState extends State<mainMenu> {
                           child: Padding(
                             padding: const EdgeInsets.only(top: 50.0, left: 10),
                             child: Text(
-                              "Référentiel \n CFTVA",
+                              "Documents \n CFTVA",
                               style: GoogleFonts.cormorantGaramond(
                                   color: Colors.white,
                                   fontWeight: FontWeight.bold,
@@ -161,24 +177,29 @@ class _mainMenuState extends State<mainMenu> {
                     SizedBox(
                       width: 10,
                     ),
-                    Container(
-                      height: 200,
-                      width: 120,
-                      child: Card(
-                        color:
-                            Color.fromARGB(255, 239, 235, 104).withOpacity(0.8),
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.only(
-                          bottomRight: Radius.circular(45),
-                        )),
-                        child: Padding(
-                          padding: const EdgeInsets.only(top: 50.0, left: 10),
-                          child: Text(
-                            "Quizz\n CFTVA",
-                            style: GoogleFonts.cormorantGaramond(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 20),
+                    GestureDetector(
+                      onTap: () {
+                      ;
+                      },
+                      child: Container(
+                        height: 200,
+                        width: 120,
+                        child: Card(
+                          color: Color.fromARGB(255, 239, 235, 104)
+                              .withOpacity(0.8),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.only(
+                            bottomRight: Radius.circular(45),
+                          )),
+                          child: Padding(
+                            padding: const EdgeInsets.only(top: 50.0, left: 10),
+                            child: Text(
+                              "Quizz\n CFTVA",
+                              style: GoogleFonts.cormorantGaramond(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 20),
+                            ),
                           ),
                         ),
                       ),
@@ -191,21 +212,7 @@ class _mainMenuState extends State<mainMenu> {
 
       // cidessous une navigationBar au cas ou ....
 
-      // bottomNavigationBar: BottomNavigationBar(
-      //   type: BottomNavigationBarType.fixed,
-      //   backgroundColor: Colors.transparent,
-      //   elevation: 0,
-      //   unselectedItemColor: Colors.grey.shade700,
-      //   selectedItemColor: Colors.white,
-      //   currentIndex: currentIndex,
-      //   onTap: (index) => setState(() {
-      //     currentIndex = index;
-      //   }),
-      //   items: [
-      //     BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
-      //     BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home")
-      //   ],
-      // )
+      //  bottomNavigationBar: bottomNavigationBar()
     );
   }
 }

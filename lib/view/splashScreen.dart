@@ -14,11 +14,10 @@ class SplashScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: double.infinity,
-      width: double.infinity,
-      decoration: BoxDecoration(color: Colors.white),
-      child: AnimatedSplashScreen(
+    return Scaffold(
+
+  
+      body: AnimatedSplashScreen(
         
           curve: Curves.easeInOutCubicEmphasized,
           backgroundColor: maincolor,
@@ -29,20 +28,35 @@ class SplashScreen extends StatelessWidget {
           splash:
            
          
-            Column(
-              children: [
-                Text(
-                  'AMAC CFTVA',
-                  style: GoogleFonts.cormorantGaramond(
-                    color: whitecolor,
-                    fontSize: 50,
-                    fontWeight: FontWeight.bold,
-                    decoration: TextDecoration.underline,
-                  ),
-                  textAlign: TextAlign.center,
-                ),
+            Container(
+              
              
-              ],
+              child: Column(
+                
+                children: [
+                  Text(
+                    'AMAC',
+                    style: GoogleFonts.cormorantGaramond(
+                      color: whitecolor,
+                      fontSize: 50,
+                      fontWeight: FontWeight.bold,
+                      decoration: TextDecoration.underline,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                  Text(
+                    'CFTVA',
+                    style: GoogleFonts.cormorantGaramond(
+                      color: whitecolor,
+                      fontSize: 50,
+                      fontWeight: FontWeight.bold,
+                      decoration: TextDecoration.underline,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+               
+                ],
+              ),
             ),
           
           nextScreen: loginScreen()),

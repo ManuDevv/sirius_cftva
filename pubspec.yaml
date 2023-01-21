@@ -54,8 +54,12 @@ dependencies:
   syncfusion_flutter_pdfviewer: ^20.4.41
   flutter_screen_wake: ^1.0.2
   animated_splash_screen: ^1.3.0
+  page_transition: ^2.0.9
 
-
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "asset/logo_cftva.png"
 
 
 dev_dependencies:
@@ -70,10 +74,7 @@ dev_dependencies:
   flutter_lints: ^2.0.1
   
 
-flutter_icons:
-  android: "launcher_icon" 
-  ios: true
-  image_path: "asset/logo_cftva.png"
+
   
 
 

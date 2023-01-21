@@ -35,4 +35,50 @@
 // }
 
 
+import 'package:flutter/material.dart';
+import 'package:firebase_storage/firebase_storage.dart';
+import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 
+
+FirebaseStorage storage=FirebaseStorage.instance;
+
+class renseignementsTechnique extends StatefulWidget {
+  const renseignementsTechnique({Key? key}) : super(key: key);
+
+  @override
+  _renseignementsTechniqueState createState() => _renseignementsTechniqueState();
+}
+
+class _renseignementsTechniqueState extends State<renseignementsTechnique> {
+ final GlobalKey<SfPdfViewerState> _pdfViewerKey = GlobalKey();
+  String renseignementTechnique='';
+ 
+
+  @override
+  void initState() {
+    getDocument();
+    
+    super.initState();
+  }
+
+  getDocument(){
+    Reference ref =storage.ref('documents').child('Consigne de Ligne version 1.pdf');
+    ref.getDownloadURL().then((chapitrectelecharge){
+      setState(() {
+        renseignementTechnique=chapitrectelecharge;
+      });
+      print('le document est télécharger');
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Consigne de ligne'),
+      ),
+      body: SfPdfViewer.network(renseignementTechnique,
+      key: _pdfViewerKey ,)
+    );
+  }
+}

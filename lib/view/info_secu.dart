@@ -4,9 +4,21 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 
-class infosecu extends StatelessWidget {
+class infosecu extends StatefulWidget {
   infosecu({Key? key}) : super(key: key);
+
+  @override
+  State<infosecu> createState() => _infosecuState();
+}
+
+class _infosecuState extends State<infosecu> {
   TextEditingController textController = TextEditingController();
+
+  @override
+  void initState() {
+    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -60,7 +72,7 @@ class infosecu extends StatelessWidget {
         //Navigator.pop(context);}
       });
     } catch (erreur) {
-      print(erreur);
+      print("il y a une $erreur");
     }
   }
 }
@@ -72,22 +84,17 @@ class recupInfoSecurite extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder(
-      stream: databaseReference.collection('infosecu').snapshots(),
+      stream: databaseReference.collection('infosecu').orderBy("heure",descending: false). snapshots(),
       builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
         if (!snapshot.hasData) return const Text('Loading...');
         return Container(
           child: Column(
-              children: snapshot.data!.docs.map((document)
-
-
-              {
+              children: snapshot.data!.docs.map((document) {
             return Container(
               margin: EdgeInsets.fromLTRB(0, 0, 0, 20),
               child: Column(
-
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-
                   Container(
                       padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
                       decoration: BoxDecoration(
@@ -96,9 +103,9 @@ class recupInfoSecurite extends StatelessWidget {
                       child: Row(
                         children: [
                           Text(
-                            'Evenement edité le: ' + document['heure'],
+                            'Evenement édité le: ' + document['heure'],
                             style: const TextStyle(
-                                fontSize: 25,
+                                fontSize: 15,
                                 fontWeight: FontWeight.bold,
                                 color: Colors.white,
                                 decoration: TextDecoration.underline),

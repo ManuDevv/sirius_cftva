@@ -5,15 +5,21 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sirius_cftva/style/colors.dart';
 
-
 import '../services/deconexion.dart';
 import 'main_menuScreen.dart';
 
-class loginScreen extends StatelessWidget {
+class loginScreen extends StatefulWidget {
+  @override
+  State<loginScreen> createState() => _loginScreenState();
+}
+
+class _loginScreenState extends State<loginScreen> {
   final TextEditingController emailController = TextEditingController();
+
   TextEditingController passwordController = TextEditingController();
 
-  bool isPasswordVisible=false;
+  bool isPasswordVisible = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -56,29 +62,29 @@ class loginScreen extends StatelessWidget {
                   style: GoogleFonts.cormorantGaramond(
                       color: Colors.white, fontSize: 15),
                 ),
-                  SizedBox(
+                SizedBox(
                   height: 20,
                 ),
                 TextField(
                   controller: emailController,
                   decoration: InputDecoration(
-                      label: Text('Email'),
-                      labelStyle:
-                          GoogleFonts.cormorantGaramond(color: Colors.white),
-                      // ignore: prefer_const_constructors
-                      prefixIcon: Icon(
-                        Icons.people,
-                        color: Colors.white,
-                      ),
-                      enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.white),
-                          borderRadius: BorderRadius.circular(30)),
-                           focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.white),
-                          borderRadius: BorderRadius.circular(30)),
-                          disabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.white)),
-                          ),
+                    label: Text('Email'),
+                    labelStyle:
+                        GoogleFonts.cormorantGaramond(color: Colors.white),
+                    // ignore: prefer_const_constructors
+                    prefixIcon: Icon(
+                      Icons.people,
+                      color: Colors.white,
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.white),
+                        borderRadius: BorderRadius.circular(30)),
+                    focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.white),
+                        borderRadius: BorderRadius.circular(30)),
+                    disabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.white)),
+                  ),
                 ),
                 SizedBox(
                   height: 20,
@@ -86,47 +92,56 @@ class loginScreen extends StatelessWidget {
                 TextField(
                   controller: passwordController,
                   decoration: InputDecoration(
-                      label: Text('Mot de passe'),
-                     // errorText: 'Mot de passe éronné',
-                      labelStyle:
-                          GoogleFonts.cormorantGaramond(color: Colors.white),
-                      prefixIcon: const Icon(
-                        Icons.lock_open,
-                        color: Colors.white,
-                      ),
-                      suffixIcon:IconButton(icon: isPasswordVisible?
-                      Icon(Icons.visibility,color: whitecolor,):
-                      Icon(Icons.visibility_off), onPressed: () {  },
-                      ) ,
-                      enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.white),
-                          borderRadius: BorderRadius.circular(30)),
-                       focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.white),
-                          borderRadius: BorderRadius.circular(30)),
-                          disabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.white)),
-                          
-                          
-                          ),
+                    
+                    label: Text('Mot de passe'),
+                    // errorText: 'Mot de passe éronné',
+                    labelStyle:
+                        GoogleFonts.cormorantGaramond(color: Colors.white),
+                    prefixIcon: const Icon(
+                      Icons.lock_open,
+                      color: Colors.white,
+                    ),
+                    suffixIcon: IconButton(
+                      icon: isPasswordVisible
+                          ? Icon(
+                              Icons.visibility,
+                              color: whitecolor,
+                            )
+                          : Icon(
+                              Icons.visibility_off,
+                              color: whitecolor,
+                            ),
+                      onPressed: () {
+                       setState(() {
+                          isPasswordVisible = !isPasswordVisible;
+                       });
+                        print(isPasswordVisible);
+                      },
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.white),
+                        borderRadius: BorderRadius.circular(30)),
+                    focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.white),
+                        borderRadius: BorderRadius.circular(30)),
+                    disabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.white)),
+                  ),
                 ),
                 const SizedBox(
                   height: 20,
                 ),
                 ElevatedButton(
-                  onPressed:()async{
-                        try {
-                          auth.signInWithEmailAndPassword(
-                              email: emailController.text.trim(),
-                              password: passwordController.text.trim());
-
-                        } on FirebaseAuthException catch (e) {
-                         ScaffoldMessenger.of(context).showSnackBar(
-                           SnackBar(content: Text(e.code))
-                         );
-                        }
-
-                      },
+                  onPressed: () async {
+                    try {
+                      auth.signInWithEmailAndPassword(
+                          email: emailController.text.trim(),
+                          password: passwordController.text.trim());
+                    } on FirebaseAuthException catch (e) {
+                      ScaffoldMessenger.of(context)
+                          .showSnackBar(SnackBar(content: Text(e.code)));
+                    }
+                  },
                   // ignore: sort_child_properties_last
                   child: Text(
                     'Connexion',

@@ -1,6 +1,5 @@
 import 'dart:async';
 
-
 import 'package:flutter/material.dart';
 import 'package:location/location.dart';
 import 'package:sirius_cftva/services/batterie.dart';
@@ -9,6 +8,7 @@ import 'package:sirius_cftva/services/difference_heure.dart';
 import 'package:sirius_cftva/services/brightness.dart';
 import 'package:sirius_cftva/services/localisation.dart';
 import 'package:sirius_cftva/services/planning_firebase_storage.dart';
+import 'package:sirius_cftva/view/bulletin_service.dart';
 
 import 'package:sirius_cftva/view/components/ligne_40km_h.dart';
 import 'package:sirius_cftva/view/components/ligne_Arques.dart';
@@ -25,6 +25,7 @@ import 'components/ligne_vide.dart';
 import 'components/ligne_30km_h.dart';
 import 'components/ligne_Setques.dart';
 import 'detail_train.dart';
+import 'main_sirius.dart';
 
 class colonne1 extends StatefulWidget {
   const colonne1({
@@ -114,13 +115,16 @@ class _colonne1State extends State<colonne1> {
                 Positioned(
                     bottom: 0,
                     child: Container(
-                      margin: EdgeInsets.only(left: 12, bottom: 20),
+                      margin: EdgeInsets.only(
+                        left: 2,
+                        bottom: 20,
+                      ),
                       height: 60,
-                      width: 980,
+                      width: 900,
                       decoration: BoxDecoration(
                           border: Border.all(color: Colors.red, width: 5)),
                     )),
-               
+
                 Positioned(
                     bottom: 0,
                     child: Row(
@@ -136,7 +140,7 @@ class _colonne1State extends State<colonne1> {
                         ),
                         Padding(
                           padding: const EdgeInsets.fromLTRB(50, 10, 20, 5),
-                          child: Text("Etabliseement"),
+                          child: Text("Etablissement"),
                         ),
                         Padding(
                           padding: const EdgeInsets.fromLTRB(90, 10, 20, 5),
@@ -179,47 +183,56 @@ class _colonne1State extends State<colonne1> {
                       Text('RT/Consigne de ligne'),
                       IconButton(
                           onPressed: () {
-                            //  Navigator.push(context, MaterialPageRoute(builder: (context)=>renseignements_technique()));
-                          },
-                          icon: Icon(Icons.arrow_forward_ios_outlined))
-                    ],
-                  ),
-                ),
-                Container(
-                  decoration: BoxDecoration(
-                      border: Border(bottom: BorderSide(color: Colors.black))),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text('Planning'),
-                      IconButton(
-                          onPressed: () {
-                            Navigator.push(context, MaterialPageRoute(builder: (context)=>planning()));
-                          },
-                          icon: Icon(Icons.arrow_forward_ios_outlined))
-                    ],
-                  ),
-                ),
-                Container(
-                  decoration: BoxDecoration(
-                      border: Border(bottom: BorderSide(color: Colors.black))),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text('Info Sécu'),
-                      IconButton(
-                          onPressed: () {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (contex) => infosecu()));
+                                    builder: (context) =>
+                                        renseignementsTechnique()));
                           },
                           icon: Icon(Icons.arrow_forward_ios_outlined))
                     ],
                   ),
                 ),
+                GestureDetector(
+                  onTap: () => Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => planning())),
+                  child: Container(
+                    decoration: BoxDecoration(
+                        border:
+                            Border(bottom: BorderSide(color: Colors.black))),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text('Planning'),
+                        IconButton(
+                            onPressed: () {},
+                            icon: Icon(Icons.arrow_forward_ios_outlined))
+                      ],
+                    ),
+                  ),
+                ),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (contex) => infosecu()));
+                  },
+                  child: Container(
+                    decoration: BoxDecoration(
+                        border:
+                            Border(bottom: BorderSide(color: Colors.black))),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text('Info Sécu'),
+                        IconButton(
+                            onPressed: () {},
+                            icon: Icon(Icons.arrow_forward_ios_outlined))
+                      ],
+                    ),
+                  ),
+                ),
                 Container(
-                    height: 200,
+                    height: 120,
                     decoration: BoxDecoration(
                         color: Colors.grey.shade300,
                         border:
@@ -292,7 +305,9 @@ class _colonne1State extends State<colonne1> {
                             color: Colors.black38,
                           )),
                       IconButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            alerte_bulletin_service(context);
+                          },
                           icon: const Icon(
                             Icons.mode_edit,
                             size: 50,
@@ -318,9 +333,7 @@ class _colonne1State extends State<colonne1> {
     });
   }
 
-  void stopTimer() async {
-    
-  }
+  void stopTimer() async {}
 
   void scrollUp() async {
     late LocationData current_Location;
@@ -485,5 +498,48 @@ class _colonne1State extends State<colonne1> {
       print('condition lumbres');
       differenceHeureLumbres();
     }
+  }
+
+  alerte_bulletin_service(BuildContext context) async {
+    return showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            
+            backgroundColor: Color(0xff0f7296) ,
+            title: Text("Editer une bulletin de service"),
+            content: Container(
+              child: Column(
+                
+                children: [
+                  Text("Journée de service terminée ?"),
+                  Text("Edité un Bulletin de service ?")
+                ],
+              ),
+            ),
+            actions: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  ElevatedButton(
+                      style: ElevatedButton.styleFrom(primary: Colors.green),
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => bulletinService()));
+                      },
+                      child: Text('Valider')),
+                  ElevatedButton(
+                      style: ElevatedButton.styleFrom(primary: Colors.red),
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      child: Text('Annuler'))
+                ],
+              )
+            ],
+          );
+        });
   }
 }

@@ -7,7 +7,7 @@ FirebaseStorage storage = FirebaseStorage.instance;
 
 class planningFiebaseStorage2 extends StatefulWidget {
   const planningFiebaseStorage2({Key? key}) : super(key: key);
-
+ 
   @override
   State<planningFiebaseStorage2> createState() =>
       _planningFiebaseStorage2State();
@@ -16,13 +16,13 @@ class planningFiebaseStorage2 extends StatefulWidget {
 class _planningFiebaseStorage2State extends State<planningFiebaseStorage2> {
   final GlobalKey<SfPdfViewerState> _pdfViewerKey = GlobalKey();
   String documentPdf = '';
-  @override
+   @override
   void initState() {
-    getDocument();
     SystemChrome.setPreferredOrientations([DeviceOrientation.landscapeLeft]);
-
     super.initState();
   }
+
+
 
   @override
   Widget build(BuildContext context) {
