@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:location/location.dart';
 import 'package:sirius_cftva/services/batterie.dart';
 import 'package:sirius_cftva/services/horloge.dart';
-import 'package:sirius_cftva/services/difference_heure.dart';
+import 'package:sirius_cftva/services/difference_heure_sens_impair.dart';
 import 'package:sirius_cftva/services/brightness.dart';
 import 'package:sirius_cftva/services/localisation.dart';
 import 'package:sirius_cftva/services/planning_firebase_storage.dart';
@@ -95,6 +95,7 @@ class _colonne1State extends State<colonne1> {
                         ligneEsquerdes(),
                         ligneVides(),
                         ligneHallines(),
+                        ligneVides(),
                         ligneQuaranteKm_h(),
                         ligneVides(),
                         ligneTrenteKm_h(),
@@ -115,7 +116,7 @@ class _colonne1State extends State<colonne1> {
                 Positioned(
                     bottom: 0,
                     child: Container(
-                      margin: EdgeInsets.only(
+                      margin: const EdgeInsets.only(
                         left: 2,
                         bottom: 20,
                       ),
@@ -129,21 +130,22 @@ class _colonne1State extends State<colonne1> {
                     bottom: 0,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      // ignore: prefer_const_literals_to_create_immutables
                       children: [
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(30, 10, 20, 5),
+                        const Padding(
+                          padding: EdgeInsets.fromLTRB(30, 10, 20, 5),
                           child: Text("VL"),
                         ),
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(30, 10, 20, 5),
+                        const Padding(
+                          padding: EdgeInsets.fromLTRB(30, 10, 20, 5),
                           child: Text('PK'),
                         ),
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(50, 10, 20, 5),
+                        const Padding(
+                          padding: EdgeInsets.fromLTRB(50, 10, 20, 5),
                           child: Text("Etablissement"),
                         ),
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(90, 10, 20, 5),
+                        const Padding(
+                          padding: EdgeInsets.fromLTRB(90, 10, 20, 5),
                           child: Text("Horraires"),
                         )
                       ],
@@ -153,60 +155,60 @@ class _colonne1State extends State<colonne1> {
           ),
           Container(
             width: 300,
-            margin: EdgeInsets.only(top: 10),
-            padding: EdgeInsets.fromLTRB(10, 10, 5, 10),
+            margin: const EdgeInsets.only(top: 10),
+            padding: const EdgeInsets.fromLTRB(10, 10, 5, 10),
             decoration: BoxDecoration(border: Border.all(color: Colors.black)),
             child: ListView(
               children: [
-                brightness(),
+                const brightness(),
                 Container(
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                       border: Border(bottom: BorderSide(color: Colors.black))),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text('Détail train'),
+                      const Text('Détail train'),
                       IconButton(
                           onPressed: () {
                             openDialog(context);
                           },
-                          icon: Icon(Icons.arrow_forward_ios_outlined))
+                          icon: const Icon(Icons.arrow_forward_ios_outlined))
                     ],
                   ),
                 ),
                 Container(
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                       border: Border(bottom: BorderSide(color: Colors.black))),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text('RT/Consigne de ligne'),
+                      const Text('RT/Consigne de ligne'),
                       IconButton(
                           onPressed: () {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) =>
-                                        renseignementsTechnique()));
+                                        const renseignementsTechnique()));
                           },
-                          icon: Icon(Icons.arrow_forward_ios_outlined))
+                          icon: const Icon(Icons.arrow_forward_ios_outlined))
                     ],
                   ),
                 ),
                 GestureDetector(
                   onTap: () => Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => planning())),
+                      MaterialPageRoute(builder: (context) => const planning())),
                   child: Container(
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                         border:
                             Border(bottom: BorderSide(color: Colors.black))),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text('Planning'),
+                        const Text('Planning'),
                         IconButton(
                             onPressed: () {},
-                            icon: Icon(Icons.arrow_forward_ios_outlined))
+                            icon: const Icon(Icons.arrow_forward_ios_outlined))
                       ],
                     ),
                   ),
@@ -217,16 +219,16 @@ class _colonne1State extends State<colonne1> {
                         MaterialPageRoute(builder: (contex) => infosecu()));
                   },
                   child: Container(
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                         border:
                             Border(bottom: BorderSide(color: Colors.black))),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text('Info Sécu'),
+                        const Text('Info Sécu'),
                         IconButton(
                             onPressed: () {},
-                            icon: Icon(Icons.arrow_forward_ios_outlined))
+                            icon: const Icon(Icons.arrow_forward_ios_outlined))
                       ],
                     ),
                   ),
@@ -236,7 +238,7 @@ class _colonne1State extends State<colonne1> {
                     decoration: BoxDecoration(
                         color: Colors.grey.shade300,
                         border:
-                            Border(bottom: BorderSide(color: Colors.black))),
+                            const Border(bottom: BorderSide(color: Colors.black))),
                     child: Column(
                       children: [
                         Column(
@@ -249,16 +251,16 @@ class _colonne1State extends State<colonne1> {
                                 children: const [horloge(), batterie()],
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 30,
                             ),
                             Container(
-                              decoration: BoxDecoration(),
+                              decoration: const BoxDecoration(),
                               child: Text(
                                 diff != null
                                     ? "Retard: $diff min"
                                     : "Retard:  min",
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontSize: 30,
                                 ),
                               ),
@@ -339,17 +341,17 @@ class _colonne1State extends State<colonne1> {
     late LocationData current_Location;
 
     //test sur portable boulot
-    double latitudeArquespoint1 = 50.970;
-    double latitudeArquespoint2 = 50.960;
-    double longitudeArquespoint1 = 2.450;
-    double longitudeArquespoint2 = 2.400;
+    // double latitudeLumbrespoint1 = 50.970;
+    // double longitudeLumbrespoint2 = 50.960;
+    // // double longitude_trente_Lumbres_point1 = 2.450;
+    // // double longitude_trente_Lumbres_point2 = 2.400;
 
     //coordonées ci dessous bonnes
 
-    // double latitudeArquespoint1 = 50.729155;
-    // double latitudeArquespoint2 = 50.7271;
-    // double longitudeArquespoint1 = 2.302659;
-    // double longitudeArquespoint2 = 2.301656;
+    double latitudeArquespoint1 = 50.729155;
+    double latitudeArquespoint2 = 50.7271;
+    double longitudeArquespoint1 = 2.302659;
+    double longitudeArquespoint2 = 2.301656;
 
     double latitudequarantepoint1 = 50.72263;
     double latitudequarantepoint2 = 50.72159;
@@ -416,85 +418,112 @@ class _colonne1State extends State<colonne1> {
         _current_Location!.longitude! < longitudeArquespoint1 &&
         _current_Location!.longitude! > longitudeArquespoint2) {
       controller.animateTo(1100,
-          duration: Duration(seconds: 1), curve: Curves.easeIn);
+          duration: const Duration(seconds: 1), curve: Curves.easeIn);
       print('condition arques');
 
       differenceHeureArques();
+
+      //40
     } else if (_current_Location!.latitude! < latitudequarantepoint1 &&
         _current_Location!.latitude! > latitudequarantepoint2 &&
         _current_Location!.longitude! < longitudequarantepoint1 &&
         _current_Location!.longitude! > longitudequarantepoint2) {
-      controller.animateTo(600,
-          duration: Duration(seconds: 1), curve: Curves.easeIn);
+      controller.animateTo(820,
+          duration: const Duration(seconds: 1), curve: Curves.easeIn);
 
       print('condition 40');
+
+
+
     } else if (_current_Location!.latitude! < latitudeBlendecquepoint1 &&
         _current_Location!.latitude! > latitudeBlendecquepoint2 &&
         _current_Location!.longitude! < longitudeBlendecquespoint1 &&
         _current_Location!.longitude! > longitudeBlendecquespoint2) {
-      controller.animateTo(530,
-          duration: Duration(seconds: 1), curve: Curves.easeIn);
+      controller.animateTo(750,
+          duration: const Duration(seconds: 1), curve: Curves.easeIn);
       differenceHeureBlendecques();
 
       print('condition Blendecques');
+
+
+
+
     } else if (_current_Location!.latitude! < latidudeCoupolepoint1 &&
         _current_Location!.longitude! < longitudeCoupolepoint1 &&
         _current_Location!.longitude! > longitudeCoupolepoint2) {
-      controller.animateTo(470,
-          duration: Duration(seconds: 1), curve: Curves.easeIn);
+      controller.animateTo(680,
+          duration: const Duration(seconds: 1), curve: Curves.easeIn);
       differenceHeureLaCoupole();
       print('condition Coupole');
+
+
+
     } else if (_current_Location!.latitude! < latitudeTrenteWizernepoint1 &&
         _current_Location!.latitude! > latidudeTrenteWizernepoint2 &&
         _current_Location!.longitude! < longitudeTrenteWizernepoint1 &&
         _current_Location!.longitude! > longitudeTrenteWizernepoint2) {
-      controller.animateTo(400,
-          duration: Duration(seconds: 1), curve: Curves.easeIn);
+      controller.animateTo(600,
+          duration: const Duration(seconds: 1), curve: Curves.easeIn);
       print(_current_Location!);
       print('condition 30 wizerne');
+
+
+
+
     } else if (_current_Location!.latitude! < latitudeQuaranteWizernepoint1 &&
         _current_Location!.longitude! < longitudequaranteWizernepoint1 &&
         _current_Location!.longitude! > longitudequaranteWizernepoint2) {
-      controller.animateTo(420,
-          duration: Duration(seconds: 1), curve: Curves.easeIn);
+      controller.animateTo(550,
+          duration: const Duration(seconds: 1), curve: Curves.easeIn);
       print('condition 40 wizerne');
-      controller.animateTo(330,
-          duration: Duration(seconds: 1), curve: Curves.easeIn);
+
+
+   
     } else if (_current_Location!.latitude! < latitudeHallinepoint1 &&
         _current_Location!.latitude! > latitudeHallinepoint2 &&
         _current_Location!.longitude! < longitudeHallinepoint1 &&
         _current_Location!.longitude! > longitudeHallinepoint2) {
-      controller.animateTo(290,
-          duration: Duration(seconds: 1), curve: Curves.easeIn);
+      controller.animateTo(470,
+          duration: const Duration(seconds: 1), curve: Curves.easeIn);
       print('conditions hallines');
       differenceHeureHallines();
-    } else if (_current_Location!.latitude! > latitudeEsquerdepoint1 &&
-        _current_Location!.latitude! < latitudeEsquerdepoint2 &&
+
+
+
+
+    } else if (_current_Location!.latitude! < latitudeEsquerdepoint1 &&
+        _current_Location!.latitude! > latitudeEsquerdepoint2 &&
         _current_Location!.longitude! < longitudeEsquerdepoint1 &&
         _current_Location!.longitude! > longitudeEsquerdepoint2) {
-      controller.animateTo(210,
-          duration: Duration(seconds: 1), curve: Curves.easeIn);
+      controller.animateTo(400,
+          duration: const Duration(seconds: 1), curve: Curves.easeIn);
       print('condition Esquerde');
       differenceHeureEsquerdes();
+
+
     } else if (_current_Location!.latitude! < latitudeSetquespoint1 &&
         _current_Location!.latitude! > latitudeSetquespoint2 &&
         _current_Location!.longitude! < longitudeSetquespoint1 &&
         _current_Location!.longitude! > longitudeSetquespoint2) {
-      controller.animateTo(150,
-          duration: Duration(seconds: 1), curve: Curves.easeIn);
+      controller.animateTo(330,
+          duration: const Duration(seconds: 1), curve: Curves.easeIn);
       print('condition Setques');
       differenceHeureSetques();
+
+      // condition 30
     } else if (_current_Location!.latitude! < latitude_trente_Lumbres_point1 &&
         _current_Location!.latitude! > latitude_trente_Lumbres_point2 &&
         _current_Location!.longitude! < longitude_trente_Lumbres_point1 &&
         _current_Location!.longitude! > longitude_trente_Lumbres_point2) {
-      controller.animateTo(80,
-          duration: Duration(seconds: 1), curve: Curves.easeIn);
+      controller.animateTo(250,
+          duration: const Duration(seconds: 1), curve: Curves.easeIn);
       print('condition 30 Lumbres');
+
+      // condition lumbre 
     } else if (_current_Location!.latitude! < latitudeLumbrespoint1 &&
         _current_Location!.longitude! < longitudeLumbrespoint2) {
-      controller.animateTo(0,
-          duration: Duration(seconds: 1), curve: Curves.easeIn);
+      controller.animateTo(180,
+          duration: const Duration(seconds: 1), curve: Curves.easeIn);
       print('condition lumbres');
       differenceHeureLumbres();
     }
@@ -506,14 +535,14 @@ class _colonne1State extends State<colonne1> {
         builder: (BuildContext context) {
           return AlertDialog(
             
-            backgroundColor: Color(0xff0f7296) ,
-            title: Text("Editer une bulletin de service"),
+            backgroundColor: const Color(0xff0f7296) ,
+            title: const Text("Editer une bulletin de service"),
             content: Container(
               child: Column(
                 
                 children: [
-                  Text("Journée de service terminée ?"),
-                  Text("Edité un Bulletin de service ?")
+                  const Text("Journée de service terminée ?"),
+                  const Text("Edité un Bulletin de service ?")
                 ],
               ),
             ),
@@ -529,13 +558,13 @@ class _colonne1State extends State<colonne1> {
                             MaterialPageRoute(
                                 builder: (context) => bulletinService()));
                       },
-                      child: Text('Valider')),
+                      child: const Text('Valider')),
                   ElevatedButton(
                       style: ElevatedButton.styleFrom(primary: Colors.red),
                       onPressed: () {
                         Navigator.pop(context);
                       },
-                      child: Text('Annuler'))
+                      child: const Text('Annuler'))
                 ],
               )
             ],
