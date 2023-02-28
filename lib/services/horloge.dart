@@ -19,7 +19,7 @@ class _horlogeState extends State<horloge> {
       ),
       areaAligment: AlignmentDirectional.topStart,
 
-      hourMinuteDigitDecoration: BoxDecoration(
+      minuteDigitDecoration: BoxDecoration(
         border: Border.all(color: Colors.transparent),
 
 

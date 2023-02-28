@@ -57,7 +57,7 @@ dependencies:
   page_transition: ^2.0.9
 
 flutter_icons:
-  android: true
+  android: "launcher_icon"
   ios: true
   image_path: "asset/logo_cftva.png"
 

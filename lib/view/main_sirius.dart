@@ -35,7 +35,7 @@ class _mainSiriusState extends State<mainSirius> {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               Text(
-                  'train N° ${widget.valeurJour}${widget.valeurMateriel}${widget.valeurSens}'),
+                  'train N° ${widget.valeurMateriel}${widget.valeurJour}${widget.valeurSens}'),
               matos()
             ],
           ),
@@ -44,20 +44,28 @@ class _mainSiriusState extends State<mainSirius> {
   }
 
   matos() {
-    if (widget.valeurMateriel == 8) {
-      return Text('Composition: X3800');
-    } else if (widget.valeurMateriel == 7) {
-      return Text('Composition : X4700');
+    if (widget.valeurMateriel == 1) {
+      return Text('Composition: Vapeur 150 CFTVA');
+    } else if (widget.valeurMateriel == 2) {
+      ;
     } else if (widget.valeurMateriel == 3) {
       return Text('Composition : BB63852');
-    } else if (widget.valeurMateriel == 2) {
-      return Text('Composition : TY2');
+    } else if (widget.valeurMateriel == 4) {
+      return Text('Composition : Diesel autre');
+    } else if (widget.valeurMateriel == 5) {
+      return Text('Composition: X3800 US');
+    } else if (widget.valeurMateriel == 6) {
+      return Text('Composition: X3800 DT');
+    } else if (widget.valeurMateriel == 7) {
+      return Text('Composition : X4700 US');
+    } else if (widget.valeurMateriel == 8) {
+      return Text('Composition : X4700 UM');
+    } else if (widget.valeurMateriel == 9) {
+      return Text('Composition : Réservé');
     }
   }
 
-  choixsens( ) {
-    
-    
+  choixsens() {
     if (widget.valeurSens == 1) {
       return colonne1();
     } else {

@@ -196,8 +196,10 @@ class _colonne1State extends State<colonne1> {
                   ),
                 ),
                 GestureDetector(
-                  onTap: () => Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => const planning())),
+                  onTap: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const planning())),
                   child: Container(
                     decoration: const BoxDecoration(
                         border:
@@ -237,8 +239,8 @@ class _colonne1State extends State<colonne1> {
                     height: 120,
                     decoration: BoxDecoration(
                         color: Colors.grey.shade300,
-                        border:
-                            const Border(bottom: BorderSide(color: Colors.black))),
+                        border: const Border(
+                            bottom: BorderSide(color: Colors.black))),
                     child: Column(
                       children: [
                         Column(
@@ -332,6 +334,7 @@ class _colonne1State extends State<colonne1> {
       scrollUp();
 
       print('fonction toutes les 3 seconds');
+      print('la loc est :${_current_Location}');
     });
   }
 
@@ -341,10 +344,10 @@ class _colonne1State extends State<colonne1> {
     late LocationData current_Location;
 
     //test sur portable boulot
-    // double latitudeLumbrespoint1 = 50.970;
-    // double longitudeLumbrespoint2 = 50.960;
-    // // double longitude_trente_Lumbres_point1 = 2.450;
-    // // double longitude_trente_Lumbres_point2 = 2.400;
+    // double latitudeArquespoint1   = 50.970;
+    // double latitudeArquespoint2   = 50.960;
+    // double longitudeArquespoint1 = 2.450;
+    // double longitudeArquespoint2 = 2.400;
 
     //coordonées ci dessous bonnes
 
@@ -354,33 +357,44 @@ class _colonne1State extends State<colonne1> {
     double longitudeArquespoint2 = 2.301656;
 
     double latitudequarantepoint1 = 50.72263;
-    double latitudequarantepoint2 = 50.72159;
     double longitudequarantepoint1 = 2.29821;
-    double longitudequarantepoint2 = 2.29677;
 
-    double latitudeBlendecquepoint1 = 50.71415;
-    double latitudeBlendecquepoint2 = 50.71352;
-    double longitudeBlendecquespoint1 = 2.27557;
-    double longitudeBlendecquespoint2 = 2.27323;
+    // pn 64
+    double latitudequarantepoint2 = 50.71882;
+    double longitudequarantepoint2 = 2.29255;
 
+    //pont 
+
+    double latitudeBlendecquepoint1 = 50.71495;
+    double longitudeBlendecquespoint1 = 2.28203;
+
+    // pn 67
+    double latitudeBlendecquepoint2 = 50.71166;
+    double longitudeBlendecquespoint2 = 2.26691;
+
+    // pn 69
     double latidudeCoupolepoint1 = 50.70691;
-    double latidudeCoupolepoint2 = 50.70672;
     double longitudeCoupolepoint1 = 2.24654;
+
+    double latidudeCoupolepoint2 = 50.70672;
     double longitudeCoupolepoint2 = 2.23680;
 
     double latitudeTrenteWizernepoint1 = 50.70672;
-    double latidudeTrenteWizernepoint2 = 50.70640;
     double longitudeTrenteWizernepoint1 = 2.23680;
+
+    double latidudeTrenteWizernepoint2 = 50.70640;
     double longitudeTrenteWizernepoint2 = 2.23353;
 
     double latitudeQuaranteWizernepoint1 = 50.70640;
-    double latidudequaranteWizernzepoint2 = 50.70519;
     double longitudequaranteWizernepoint1 = 2.23353;
+
+
+    double latidudequaranteWizernzepoint2 = 50.70519;
     double longitudequaranteWizernepoint2 = 2.22837;
 
     double latitudeHallinepoint1 = 50.70448;
-    double latitudeHallinepoint2 = 50.70362;
     double longitudeHallinepoint1 = 2.22118;
+    double latitudeHallinepoint2 = 50.70362;
     double longitudeHallinepoint2 = 2.20856;
 
     double latitudeEsquerdepoint1 = 50.70270;
@@ -389,8 +403,8 @@ class _colonne1State extends State<colonne1> {
     double longitudeEsquerdepoint2 = 2.17663;
 
     double latitudeSetquespoint1 = 50.70859;
-    double latitudeSetquespoint2 = 50.70614;
     double longitudeSetquespoint1 = 2.15845;
+    double latitudeSetquespoint2 = 50.70614;
     double longitudeSetquespoint2 = 2.15146;
 
     double latitude_trente_Lumbres_point1 = 50.70503;
@@ -432,20 +446,15 @@ class _colonne1State extends State<colonne1> {
           duration: const Duration(seconds: 1), curve: Curves.easeIn);
 
       print('condition 40');
-
-
-
     } else if (_current_Location!.latitude! < latitudeBlendecquepoint1 &&
-        _current_Location!.latitude! > latitudeBlendecquepoint2 &&
         _current_Location!.longitude! < longitudeBlendecquespoint1 &&
+        _current_Location!.latitude! > latitudeBlendecquepoint2 &&
         _current_Location!.longitude! > longitudeBlendecquespoint2) {
       controller.animateTo(750,
           duration: const Duration(seconds: 1), curve: Curves.easeIn);
       differenceHeureBlendecques();
 
       print('condition Blendecques');
-
-
 
 
     } else if (_current_Location!.latitude! < latidudeCoupolepoint1 &&
@@ -457,7 +466,7 @@ class _colonne1State extends State<colonne1> {
       print('condition Coupole');
 
 
-
+      
     } else if (_current_Location!.latitude! < latitudeTrenteWizernepoint1 &&
         _current_Location!.latitude! > latidudeTrenteWizernepoint2 &&
         _current_Location!.longitude! < longitudeTrenteWizernepoint1 &&
@@ -466,19 +475,12 @@ class _colonne1State extends State<colonne1> {
           duration: const Duration(seconds: 1), curve: Curves.easeIn);
       print(_current_Location!);
       print('condition 30 wizerne');
-
-
-
-
     } else if (_current_Location!.latitude! < latitudeQuaranteWizernepoint1 &&
         _current_Location!.longitude! < longitudequaranteWizernepoint1 &&
         _current_Location!.longitude! > longitudequaranteWizernepoint2) {
       controller.animateTo(550,
           duration: const Duration(seconds: 1), curve: Curves.easeIn);
       print('condition 40 wizerne');
-
-
-   
     } else if (_current_Location!.latitude! < latitudeHallinepoint1 &&
         _current_Location!.latitude! > latitudeHallinepoint2 &&
         _current_Location!.longitude! < longitudeHallinepoint1 &&
@@ -486,11 +488,8 @@ class _colonne1State extends State<colonne1> {
       controller.animateTo(470,
           duration: const Duration(seconds: 1), curve: Curves.easeIn);
       print('conditions hallines');
+      print(_current_Location);
       differenceHeureHallines();
-
-
-
-
     } else if (_current_Location!.latitude! < latitudeEsquerdepoint1 &&
         _current_Location!.latitude! > latitudeEsquerdepoint2 &&
         _current_Location!.longitude! < longitudeEsquerdepoint1 &&
@@ -499,10 +498,8 @@ class _colonne1State extends State<colonne1> {
           duration: const Duration(seconds: 1), curve: Curves.easeIn);
       print('condition Esquerde');
       differenceHeureEsquerdes();
-
-
     } else if (_current_Location!.latitude! < latitudeSetquespoint1 &&
-        _current_Location!.latitude! > latitudeSetquespoint2 &&
+        _current_Location!.latitude! >latitudeSetquespoint2 &&
         _current_Location!.longitude! < longitudeSetquespoint1 &&
         _current_Location!.longitude! > longitudeSetquespoint2) {
       controller.animateTo(330,
@@ -519,7 +516,7 @@ class _colonne1State extends State<colonne1> {
           duration: const Duration(seconds: 1), curve: Curves.easeIn);
       print('condition 30 Lumbres');
 
-      // condition lumbre 
+      // condition lumbre
     } else if (_current_Location!.latitude! < latitudeLumbrespoint1 &&
         _current_Location!.longitude! < longitudeLumbrespoint2) {
       controller.animateTo(180,
@@ -534,12 +531,10 @@ class _colonne1State extends State<colonne1> {
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            
-            backgroundColor: const Color(0xff0f7296) ,
+            backgroundColor: const Color(0xff0f7296),
             title: const Text("Editer une bulletin de service"),
             content: Container(
               child: Column(
-                
                 children: [
                   const Text("Journée de service terminée ?"),
                   const Text("Edité un Bulletin de service ?")

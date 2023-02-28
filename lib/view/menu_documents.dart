@@ -3,6 +3,7 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sirius_cftva/view/documents/rpe.dart';
+import 'package:sirius_cftva/view/documents/rse.dart';
 import 'package:sirius_cftva/view/menu_chapitre_referentiel.dart';
 
 final ref = FirebaseStorage.instance;
@@ -42,7 +43,7 @@ class menuDocuements extends StatelessWidget {
                 GestureDetector(
                   onTap: (() {
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => rpe()));
+                        MaterialPageRoute(builder: (context) => const rpe()));
                   }),
                   child: Container(
                     margin: EdgeInsets.all(10),
@@ -75,7 +76,10 @@ class menuDocuements extends StatelessWidget {
                   ),
                 ),
                 GestureDetector(
-                  onTap: (() {}),
+                  onTap: (() {
+                  Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => const rse()));
+                  }),
                   child: Container(
                     padding: EdgeInsets.all(10),
                     // height: 200,

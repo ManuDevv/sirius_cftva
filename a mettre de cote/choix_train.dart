@@ -20,7 +20,7 @@ class _choixTrainState extends State<choixTrain> {
     'Samedi',
     'Dimanche'
   ];
-  final itemsMateriel = ['X3800', 'X4700', 'BB63852', 'TY2'];
+  final itemsMateriel = ['V''X3800', 'X4700', 'BB63852', 'TY2'];
   final itemsSens = ['1', '2'];
 
   String? selectedItemJours = 'Lundi';
@@ -210,16 +210,28 @@ class _choixTrainState extends State<choixTrain> {
   }
 
   void FonctionvaleurMateriel() {
-    if (selectedItemMateriel == 'X3800') {
-      valeurMateriel = 8;
-    } else if (selectedItemMateriel == 'X4700') {
-      valeurMateriel = 7;
+    if (selectedItemMateriel == 'Vapeur 150 CFTVA') {
+      valeurMateriel = 1;
+    } else if (selectedItemMateriel == 'Vapeur autre') {
+      valeurMateriel = 2;
     } else if (selectedItemMateriel == 'BB63852') {
       valeurMateriel = 3;
-    } else if (selectedItemMateriel == 'TY2') {
-      valeurMateriel = 2;
+    } else if (selectedItemMateriel == 'Diesel autre') {
+      valeurMateriel = 4;
+    } else if (selectedItemMateriel == 'X3800 US') {
+      valeurMateriel = 5;
+    } else if (selectedItemMateriel == 'X3800 DT') {
+      valeurMateriel = 6;
     }
-  }
+      else if(selectedItemMateriel=='X4700 US'){
+        valeurMateriel=7;
+      }else if (selectedItemMateriel =='X4700 UM'){
+        valeurMateriel=8;
+      }else if(selectedItemMateriel=='Réservé'){
+        valeurMateriel=9;
+      }
+    }
+  
 
   void FonctionvaleurSens() {
     if (selectedItemSens == '1') {
@@ -235,7 +247,7 @@ class _choixTrainState extends State<choixTrain> {
       valeurMateriel;
       valeurSens;
     });
-    return Text(('Votre train est :$valeurJour$valeurMateriel$valeurSens'),
+    return Text(('Votre train est :$valeurMateriel$valeurJour$valeurSens'),
         style: TextStyle(color: Colors.white60, fontWeight: FontWeight.w700));
   }
 
@@ -250,7 +262,7 @@ class _choixTrainState extends State<choixTrain> {
               style: TextStyle(),
             ),
             content: Text(
-                ('Votre numéro de marche  est :$valeurJour$valeurMateriel$valeurSens')),
+                ('Votre numéro de marche  est :r$valeurMateriel$valeurJour$valeurSens')),
             actions: [
               ElevatedButton(
                   style: ElevatedButton.styleFrom(primary: Colors.green),
@@ -258,7 +270,7 @@ class _choixTrainState extends State<choixTrain> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => test_parametre(
+                            builder: (context) => mainSirius(
                                 valeurJour: valeurJour,
                                 valeurMateriel: valeurMateriel,
                                 valeurSens: valeurSens)));

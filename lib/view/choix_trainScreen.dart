@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:sirius_cftva/style/colors.dart';
 import 'package:sirius_cftva/view/main_sirius.dart';
 
 //import 'package:sirius_cftva/view/numero_train.dart';
@@ -22,11 +23,11 @@ class _choixTrainState extends State<choixTrain> {
     'Samedi',
     'Dimanche'
   ];
-  final itemsMateriel = ['X3800', 'X4700', 'BB63852', 'TY2'];
+  final itemsMateriel = ['Vapeur 150 CFTVA','Vapeur autre','BB63852','Diesel autre','X3800 US','X3800 DT', 'X4700 US','X4700 UM' , 'Réservé'];
   final itemsSens = ['1', '2'];
 
   String? selectedItemJours = 'Lundi';
-  String? selectedItemMateriel = 'X3800';
+  String? selectedItemMateriel = 'Vapeur 150 CFTVA';
   String? selectedItemSens = '1';
 
   int valeurJour = 0;
@@ -43,8 +44,9 @@ class _choixTrainState extends State<choixTrain> {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
-      appBar: AppBar(backgroundColor: Colors.transparent,
-      elevation: 0,
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
         title: Text('Choisir son train'),
       ),
       body: Center(
@@ -53,67 +55,204 @@ class _choixTrainState extends State<choixTrain> {
               border: Border.all(color: Colors.black),
               // ignore: prefer_const_constructors
               gradient: LinearGradient(
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                  colors:const <Color>[
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: const <Color>[
                     Color(0xff0f7296),
                     Color(0xff0f7296),
                     Color(0xffa68f49)
-                     ]
-                     )
-                     ),
+                  ])),
           width: 700,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               // ignore: prefer_const_constructors
               Padding(
-                padding: const EdgeInsets.fromLTRB(20, 100, 20, 10),
-                child: const Text(
-                  "Afin d'identifier la marche de votre train, veuillez rensseigner les champs ci-dessous",
-                  textAlign: TextAlign.left,
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 30,
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(20, 40, 20, 20),
-                child: DropdownButtonFormField<String>(
-                  iconEnabledColor: Colors.white,
-                  dropdownColor: Color.fromARGB(255, 50, 172, 228),
-                  decoration: InputDecoration(
-                      label: Text(
-                        'Jour de la semaine',
-                        style: TextStyle(
-                            color: Colors.white, fontWeight: FontWeight.bold),
-                      ),
-                      enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(12),
-                          borderSide:
-                              BorderSide(width: 3, color: Colors.white)),
-                              
-                              ),
-                  items: itemsJours.map((String singleItem) {
-                    return DropdownMenuItem<String>(
-                      value: singleItem,
-                      child: Text(
-                        singleItem,
-                        style: TextStyle(
-                            color: Colors.white, fontWeight: FontWeight.bold),
-                      ),
-                    );
-                  }).toList(),
-                  onChanged: (itemchoisi) {
-                    setState(() {
-                      selectedItemJours = itemchoisi;
-                    });
-                  },
-                  value: selectedItemJours,
-                ),
-              ),
+                  padding: const EdgeInsets.fromLTRB(20, 100, 20, 10),
+                  child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Container(
+                          padding: EdgeInsets.all(15),
+                          decoration: BoxDecoration(
+                              border: Border.all(color: whitecolor),
+                              borderRadius: BorderRadius.circular(30)),
+                          child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: const [
+                                Text(
+                                  'Le chiffre des centaines :',
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                      decoration: TextDecoration.underline),
+                                ),
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                Text(
+                                  "1  Vapeur 150 CFTVA",
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                Text(
+                                  "2  Vapeur autre",
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                Text(
+                                  "3  63500",
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                Text(
+                                  "4  Diesel autre",
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                Text(
+                                  "5  X3800 US",
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                Text(
+                                  "6  X3800 DT",
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                Text(
+                                  "7  X4700 US",
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                Text(
+                                  "8  X4700 UM",
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                Text(
+                                  "9  Réservé ",
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                Text(
+                                  "10  Réservé ",
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ]),
+                        ),
+                        Container(
+                          height: 220,
+                          padding: EdgeInsets.all(15),
+                          decoration: BoxDecoration(
+                              border: Border.all(color: whitecolor),
+                              borderRadius: BorderRadius.circular(30)),
+                          child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: const [
+                                Text(
+                                  'Le chiffre des dizaines :',
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                      decoration: TextDecoration.underline),
+                                ),
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                Text(
+                                  "1  Lundi",
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                Text(
+                                  "2  Mardi",
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                Text(
+                                  "3  Mercredi",
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                Text(
+                                  "4  Jeudi",
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                Text(
+                                  "5  Vendredi",
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                Text(
+                                  "6  Samedi",
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                Text(
+                                  "7  Dimanche",
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ]),
+                        ),
+                        Container(
+                          height: 220,
+                          padding: EdgeInsets.all(15),
+                          decoration: BoxDecoration(
+                              border: Border.all(color: whitecolor),
+                              borderRadius: BorderRadius.circular(30)),
+                          child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: const [
+                                Text(
+                                  'Le chiffre des unités :',
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                      decoration: TextDecoration.underline),
+                                ),
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                Text(
+                                  "1  Sens Impair \nArques => Lumbres",
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                SizedBox(
+                                  height: 30,
+                                ),
+                                Text(
+                                  "2  Sens Pair \nLumbres => Arques ",
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ]),
+                        )
+                      ])),
+
               Padding(
                 padding: const EdgeInsets.all(20.0),
                 child: DropdownButtonFormField<String>(
@@ -144,6 +283,43 @@ class _choixTrainState extends State<choixTrain> {
                     });
                   },
                   value: selectedItemMateriel,
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(20, 40, 20, 20),
+                child: DropdownButtonFormField<String>(
+                  iconEnabledColor: Colors.white,
+                  dropdownColor: Color.fromARGB(255, 50, 172, 228),
+                  decoration: InputDecoration(
+                      label: const Text(
+                        'Jour de la semaine',
+                        style: TextStyle(
+                            color: Colors.white, fontWeight: FontWeight.bold),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(12),
+                          borderSide:
+                              BorderSide(width: 3, color: Colors.white)),
+                      disabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(12),
+                          borderSide:
+                              BorderSide(width: 3, color: Colors.white))),
+                  items: itemsJours.map((String singleItem) {
+                    return DropdownMenuItem<String>(
+                      value: singleItem,
+                      child: Text(
+                        singleItem,
+                        style: TextStyle(
+                            color: Colors.white, fontWeight: FontWeight.bold),
+                      ),
+                    );
+                  }).toList(),
+                  onChanged: (itemchoisi) {
+                    setState(() {
+                      selectedItemJours = itemchoisi;
+                    });
+                  },
+                  value: selectedItemJours,
                 ),
               ),
               Padding(
@@ -226,14 +402,24 @@ class _choixTrainState extends State<choixTrain> {
   }
 
   void FonctionvaleurMateriel() {
-    if (selectedItemMateriel == 'X3800') {
-      valeurMateriel = 8;
-    } else if (selectedItemMateriel == 'X4700') {
-      valeurMateriel = 7;
+    if (selectedItemMateriel ==        'Vapeur 150 CFTVA') {
+      valeurMateriel = 1;
+    } else if (selectedItemMateriel == 'Vapeur autre') {
+      valeurMateriel = 2;
     } else if (selectedItemMateriel == 'BB63852') {
       valeurMateriel = 3;
-    } else if (selectedItemMateriel == 'TY2') {
-      valeurMateriel = 2;
+    } else if (selectedItemMateriel == 'Diesel autre') {
+      valeurMateriel = 4;
+    } else if (selectedItemMateriel == 'X3800 US') {
+      valeurMateriel = 5;
+    } else if (selectedItemMateriel == 'X3800 DT') {
+      valeurMateriel = 6;
+    } else if (selectedItemMateriel == 'X4700 US') {
+      valeurMateriel = 7;
+    } else if (selectedItemMateriel == 'X4700 UM') {
+      valeurMateriel = 8;
+    } else if (selectedItemMateriel == "Réservé") {
+      valeurMateriel = 9;
     }
   }
 
@@ -247,11 +433,11 @@ class _choixTrainState extends State<choixTrain> {
 
   numero_marche() {
     setState(() {
-      valeurJour;
       valeurMateriel;
+      valeurJour;
       valeurSens;
     });
-    return Text(('Votre train est :$valeurJour$valeurMateriel$valeurSens'),
+    return Text(('Votre train est :$valeurMateriel$valeurJour$valeurSens'),
         style: TextStyle(color: Colors.white60, fontWeight: FontWeight.w700));
   }
 
@@ -264,10 +450,9 @@ class _choixTrainState extends State<choixTrain> {
             title: const Text(
               'Valider ?',
               style: TextStyle(fontWeight: FontWeight.bold),
-            
             ),
             content: Text(
-                ('Votre numéro de marche  est :$valeurJour$valeurMateriel$valeurSens')),
+                ('Votre numéro de marche  est :$valeurMateriel$valeurJour$valeurSens')),
             actions: [
               ElevatedButton(
                   style: ElevatedButton.styleFrom(primary: Colors.green),
@@ -276,8 +461,8 @@ class _choixTrainState extends State<choixTrain> {
                         context,
                         MaterialPageRoute(
                             builder: (context) => mainSirius(
-                                valeurJour: valeurJour,
                                 valeurMateriel: valeurMateriel,
+                                valeurJour: valeurJour,
                                 valeurSens: valeurSens)));
                   },
                   child: Text('Valider')),

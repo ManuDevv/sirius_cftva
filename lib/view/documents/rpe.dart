@@ -38,7 +38,7 @@ class _rpeState extends State<rpe> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Réglement de police d'exploitation"),
+        title: Text("Réglement de Sécurité de l'Exploitation"),
       ),
       body: SfPdfViewer.network(rpe,
       key: _pdfViewerKey ,)

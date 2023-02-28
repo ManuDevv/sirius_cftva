@@ -38,7 +38,7 @@ class _brightnessState extends State<brightness> {
               },
               min: 0,
               max: 20,
-              divisions: 2,
+              divisions: 1 ,
               inactiveColor: Colors.white,
               activeColor: Colors.blueAccent,
             ),
@@ -53,7 +53,7 @@ class _brightnessState extends State<brightness> {
     try {
       brightness = await FlutterScreenWake.brightness;
     } on PlatformException {
-      brightness = 20.0;
+      brightness = 10.0;
     }
 
     setState(() {
